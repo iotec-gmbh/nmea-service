@@ -89,7 +89,7 @@ func updateGPS(r io.Reader) {
 			d.Timestamp = time.Date(
 				yearOffset+m.Date.YY, time.Month(m.Date.MM), m.Date.DD,
 				m.Time.Hour, m.Time.Minute, m.Time.Second, m.Time.Millisecond,
-				time.UTC)
+				time.UTC).Truncate(time.Second)
 			d.update = time.Now()
 			d.m.Unlock()
 			if *verbose {
